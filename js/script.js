@@ -42,4 +42,8 @@ function sendWhatsApp() {
 
     let whatsappURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, "_blank");
+        // Tunggu 2 detik sebelum halaman di-refresh
+    setTimeout(function() {
+      location.reload();
+    }, 2000);
 }
