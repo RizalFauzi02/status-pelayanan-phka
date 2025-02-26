@@ -1,3 +1,15 @@
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header img {
+    max-width: 250px; /* Sesuaikan ukuran logo */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -32,7 +44,7 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box; /* Agar padding tidak membuat input lebih lebar */
+    box-sizing: border-box;
 }
 
 button {
@@ -99,5 +111,11 @@ button:hover {
         font-size: 14px;
         padding: 12px;
         margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header img {
+        max-width: 100px; /* Logo lebih kecil di mobile */
     }
 }
