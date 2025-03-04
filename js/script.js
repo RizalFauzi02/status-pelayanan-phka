@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             let waNumber = document.getElementById("waNumber").value.trim();
             let namaPasien = document.getElementById("nama_pasien").value.trim().toUpperCase();
-            let tglLahir = document.getElementById("tgl_lahir_pasien").value.trim();
+            let tglLahirInput = document.getElementById("tgl_lahir_pasien").value.trim();
             let status = this.getAttribute("data-status");
 
             // Validasi Input
-            if (waNumber === "" || namaPasien === "" || tglLahir === "") {
+            if (waNumber === "" || namaPasien === "" || tglLahirInput === "") {
                 Swal.fire({
                     title: "Perhatian!",
                     text: "Harap lengkapi semua data pasien sebelum melanjutkan!",
@@ -39,9 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            // Mengubah format tanggal lahir dari yyyy-mm-dd ke dd/mm/yyyy
+            let tglLahirFormatted = formatTanggal(tglLahirInput);
+
             let message = messages[status]
                 .replace("[Nama Pasien]", namaPasien)
-                .replace("[Tgl Lahir]", tglLahir);
+                .replace("[Tgl Lahir]", tglLahirFormatted);
 
             document.getElementById("message").value = message;
 
@@ -50,7 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
             this.classList.add("active");
         });
     });
+
+    // Fungsi untuk mengubah format tanggal lahir
+    function formatTanggal(dateStr) {
+        let parts = dateStr.split("-"); // Memisahkan "yyyy-mm-dd"
+        return `${parts[2]}/${parts[1]}/${parts[0]}`; // Menyusun kembali jadi "dd/mm/yyyy"
+    }
 });
+
 
 
 
