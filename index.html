@@ -8,6 +8,9 @@
 
     <!-- Sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -28,10 +31,18 @@
         
         <h3>Status Pelayanan:</h3>
         <div class="status-buttons">
-            <button class="status-btn" data-status="Menyiapkan Berkas Pulang">Menyiapkan Berkas Pulang</button>
-            <button class="status-btn" data-status="Mengantar Obat Pasien Pulang">Mengantar Obat Pasien Pulang</button>
-            <button class="status-btn" data-status="Dalam Antrian">Dalam Antrian</button>
-            <button class="status-btn" data-status="Sedang Dalam Proses">Sedang Dalam Proses</button>
+            <button class="status-btn" data-status="Menyiapkan Berkas Pulang">
+                <i class="fas fa-file-medical"></i> Menyiapkan Berkas Pulang
+            </button>
+            <button class="status-btn" data-status="Mengantar Obat Pasien Pulang">
+                <i class="fas fa-truck-medical"></i> Mengantar Obat Pasien Pulang
+            </button>
+            <button class="status-btn" data-status="Dalam Antrian">
+                <i class="fas fa-hourglass-half"></i> Dalam Antrian
+            </button>
+            <button class="status-btn" data-status="Sedang Dalam Proses">
+                <i class="fas fa-spinner fa-spin"></i> Sedang Dalam Proses
+            </button>
         </div>
         
         <h3>Pesan:</h3>
