@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.querySelectorAll(".status-btn");
 
     const messages = {
-        "Menyiapkan Berkas Pulang": "Selamat Pagi/Siang/Sore/Malam, \nSaat ini perawat sedang menyiapkan berkas kepulangan Anda atas nama: *[Nama Pasien]*, tanggal lahir: *[Tgl Lahir]*. \nMohon menunggu, kami akan segera menginformasikan proses selanjutnya.",
+        "Menyiapkan Berkas Pulang": "Selamat Pagi/Siang/Sore/Malam, \n\nSaat ini perawat sedang menyiapkan berkas kepulangan Anda:\n\nNama: *[Nama Pasien]* \nTanggal lahir: *[Tgl Lahir]* \n\nMohon menunggu, kami akan segera menginformasikan proses selanjutnya.",
 
         "Mengantar Obat Pasien Pulang": "Terima kasih telah bersedia menunggu. Petugas Farmasi saat ini sedang mempersiapkan obat kepulangan Anda dan akan segera mengantarkannya ke ruang perawatan.",
 
