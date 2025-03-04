@@ -15,16 +15,27 @@
             <img src="img/Logo_Primaya_Hospital.png" alt="Logo Primaya Hospital">
         </div>
         <h2>Update Status Pelayanan</h2>
+        
+        <label for="nama_pasien">Nama Pasien:</label>
+        <input type="text" id="nama_pasien" placeholder="Nama Lengkap Pasien">
+        
+        <label for="tgl_lahir_pasien">Tanggal Lahir Pasien:</label>
+        <input type="date" id="tgl_lahir_pasien">
+
         <label for="waNumber">Nomor WhatsApp Pasien:</label>
-        <input type="number" id="waNumber" placeholder="Contoh nomor: 6285956368533">
+        <input type="text" id="waNumber" placeholder="62xxxxxxx">
         <p>*Penulisan nomor WhatsApp: <b>6285956368533</b></p>
         
         <h3>Status Pelayanan:</h3>
-        <button onclick="setStatus('*Berkas di Admin*')">Berkas di Admin</button>
-        <button onclick="setStatus('*Berkas di Nurse*')">Berkas di Nurse</button>
+        <div class="status-buttons">
+            <button class="status-btn" data-status="Menyiapkan Berkas Pulang">Menyiapkan Berkas Pulang</button>
+            <button class="status-btn" data-status="Mengantar Obat Pasien Pulang">Mengantar Obat Pasien Pulang</button>
+            <button class="status-btn" data-status="Dalam Antrian">Dalam Antrian</button>
+            <button class="status-btn" data-status="Sedang Dalam Proses">Sedang Dalam Proses</button>
+        </div>
         
         <h3>Pesan:</h3>
-        <textarea id="message" rows="4" readonly></textarea>
+        <textarea id="message" rows="8"></textarea>
         
         <button onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
         <h5>Develop: IT Primaya Hospital Karawang</h5>

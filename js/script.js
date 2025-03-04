@@ -8,22 +8,51 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-function setStatus(status) {
-    let waNumber = document.getElementById("waNumber").value.trim();
-    if (waNumber === "") {
-        Swal.fire({
-            title: "Perhatian!",
-            text: "Masukkan Nomor WhatsApp pasien terlebih dahulu!",
-            icon: "error",
-            confirmButtonText: "OK",
-            timerProgressBar: true
-        });
-        return;
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.querySelectorAll(".status-btn");
 
-    let message = `Selamat Pagi/Siang/Sore/Malam Bapak/Ibu, pasien yang terhormat. Status berkas Anda di PRIMAYA HOSPITAL KARAWANG saat ini berada: ${status}. Terima kasih.`;
-    document.getElementById("message").value = message;
-}
+    const messages = {
+        "Menyiapkan Berkas Pulang": "Selamat Pagi/Siang/Sore/Malam, \nSaat ini perawat sedang menyiapkan berkas kepulangan Anda atas nama: *[Nama Pasien]*, tanggal lahir: *[Tgl Lahir]*. \nMohon menunggu, kami akan segera menginformasikan proses selanjutnya.",
+
+        "Mengantar Obat Pasien Pulang": "Terima kasih telah bersedia menunggu. Petugas Farmasi saat ini sedang mempersiapkan obat kepulangan Anda dan akan segera mengantarkannya ke ruang perawatan.",
+
+        "Dalam Antrian": "Berkas kepulangan Anda saat ini sedang dalam antrian di Kasir Rawat Inap. Terima kasih telah bersedia menunggu.",
+
+        "Sedang Dalam Proses": "Berkas kepulangan Anda saat ini sedang diproses oleh Petugas Kasir Rawat Inap. Estimasi waktu penyelesaian adalah [.....] menit. Terima kasih atas pengertiannya."
+    };
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            let waNumber = document.getElementById("waNumber").value.trim();
+            let namaPasien = document.getElementById("nama_pasien").value.trim().toUpperCase();
+            let tglLahir = document.getElementById("tgl_lahir_pasien").value.trim();
+            let status = this.getAttribute("data-status");
+
+            // Validasi Input
+            if (waNumber === "" || namaPasien === "" || tglLahir === "") {
+                Swal.fire({
+                    title: "Perhatian!",
+                    text: "Harap lengkapi semua data pasien sebelum melanjutkan!",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+                return;
+            }
+
+            let message = messages[status]
+                .replace("[Nama Pasien]", namaPasien)
+                .replace("[Tgl Lahir]", tglLahir);
+
+            document.getElementById("message").value = message;
+
+            // Highlight tombol yang aktif
+            buttons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+});
+
+
 
 function sendWhatsApp() {
     let waNumber = document.getElementById("waNumber").value.trim();
